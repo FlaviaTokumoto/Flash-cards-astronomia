@@ -10,8 +10,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(to bottom, #050816, #0b1f3a);
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: #ffffff;
 }
+
+/* Cabeçalho */
 
 .cabecalho {
     padding: 18px 30px;
@@ -19,11 +21,16 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #09122b;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #ffd54f;
+    font-size: 30px;
 }
 
 .cabecalho-link {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-weight: bold;
 }
@@ -32,37 +39,43 @@ body {
     color: #ffd54f;
 }
 
-h1 {
-    color: #ffd54f;
-    font-size: 30px;
-}
-
-h2 {
-    margin: 30px 0;
-    color: white;
-    text-align: center;
-}
+/* Conteúdo principal */
 
 main {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
+}
+
+h2 {
+    margin: 20px 0 35px;
+    color: #ffffff;
+    text-align: center;
 }
 
 section {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 35px;
     flex-wrap: wrap;
     margin-bottom: 40px;
 }
 
+/* Área externa do cartão */
+
 .cartao {
     width: 320px;
     height: 420px;
+
+    /* Cria a sensação de profundidade durante o giro */
     perspective: 1000px;
+    cursor: pointer;
 }
+
+/* Parte do cartão que realiza o giro */
 
 .cartao-interno {
     position: relative;
@@ -72,47 +85,100 @@ section {
     transform-style: preserve-3d;
 }
 
+/* Faz o cartão virar quando o mouse passa sobre ele */
+
 .cartao:hover .cartao-interno {
     transform: rotateY(180deg);
 }
 
+/* Frente e verso dos cartões */
+
 .cartao-frente,
 .cartao-verso {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
-    color: #222;
-    border-radius: 15px;
-    overflow: hidden;
-    backface-visibility: hidden;
+
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+    background-color: #ffffff;
+    color: #222222;
+
+    border-radius: 15px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
+    /* Esconde o lado que estiver virado para trás */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
+
+/* O verso começa virado */
 
 .cartao-verso {
     transform: rotateY(180deg);
 }
+
+/* Imagens */
 
 .cartao-imagem {
     width: 100%;
     height: 230px;
     object-fit: cover;
+    display: block;
 }
+
+/* Textos dos cartões */
 
 .cartao-frente p,
 .cartao-verso p {
-    padding: 18px;
+    flex: 1;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-size: 18px;
-    text-align: center;
     font-weight: bold;
     line-height: 1.5;
+    text-align: center;
 }
+
+/* Rodapé */
 
 footer {
     background-color: #09122b;
-    padding: 18px;
+    padding: 18px 25px;
+    color: #ffffff;
     text-align: center;
-    color: white;
+}
+
+/* Ajuste para telas menores */
+
+@media screen and (max-width: 700px) {
+    section {
+        flex-direction: column;
+    }
+
+    .cartao {
+        width: 290px;
+        height: 400px;
+    }
+
+    .cartao-imagem {
+        height: 220px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
 }
