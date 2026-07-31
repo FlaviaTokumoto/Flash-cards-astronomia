@@ -5,9 +5,9 @@
 }
 
 body {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     background: linear-gradient(to bottom, #050816, #0b1f3a);
     font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
@@ -43,61 +43,60 @@ h1 {
 
 main {
     flex: 1;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
 }
 
 h2 {
-    margin: 20px 0 35px;
-    color: #ffffff;
+    margin-bottom: 35px;
     text-align: center;
 }
 
-section {
+/* Área dos cartões */
+
+.area-cartoes {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 35px;
     flex-wrap: wrap;
-    margin-bottom: 40px;
 }
 
-/* Área externa do cartão */
+/* Estrutura externa do cartão */
 
 .cartao {
     width: 320px;
     height: 420px;
-
-    /* Cria a sensação de profundidade durante o giro */
     perspective: 1000px;
     cursor: pointer;
 }
 
-/* Parte do cartão que realiza o giro */
+/* Parte que gira */
 
 .cartao-interno {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
     transform-style: preserve-3d;
+    transition: transform 0.8s ease;
 }
 
-/* Faz o cartão virar quando o mouse passa sobre ele */
+/* Movimento ao passar o mouse */
 
 .cartao:hover .cartao-interno {
     transform: rotateY(180deg);
 }
 
-/* Frente e verso dos cartões */
+/* Frente e verso */
 
 .cartao-frente,
 .cartao-verso {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+
     width: 100%;
     height: 100%;
 
@@ -112,7 +111,6 @@ section {
 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 
-    /* Esconde o lado que estiver virado para trás */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
@@ -128,11 +126,11 @@ section {
 .cartao-imagem {
     width: 100%;
     height: 230px;
-    object-fit: cover;
     display: block;
+    object-fit: cover;
 }
 
-/* Textos dos cartões */
+/* Textos */
 
 .cartao-frente p,
 .cartao-verso p {
@@ -152,16 +150,16 @@ section {
 /* Rodapé */
 
 footer {
-    background-color: #09122b;
     padding: 18px 25px;
+    background-color: #09122b;
     color: #ffffff;
     text-align: center;
 }
 
-/* Ajuste para telas menores */
+/* Ajuste para celular */
 
 @media screen and (max-width: 700px) {
-    section {
+    .area-cartoes {
         flex-direction: column;
     }
 
